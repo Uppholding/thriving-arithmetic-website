@@ -3,32 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thriving Arithmetic Website</title>
+    <title>FAISIT</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
+            padding-top: 80px;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
         }
-        h1 {
-            color: #333;
+        
+        header.scrolled {
+            padding: 15px 40px;
+        }
+        
+        .logo {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled .logo {
+            height: 40px;
+        }
+        
+        .logo.color-change {
+            filter: hue-rotate(180deg) brightness(1.2);
+        }
+        
+        .section {
+            min-height: 100vh;
+            padding: 60px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .section:nth-child(odd) {
+            background: #f5f5f5;
+        }
+        
+        .section:nth-child(even) {
+            background: white;
+        }
+        
+        .content {
+            max-width: 1200px;
             text-align: center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Thriving Arithmetic Website</h1>
-        <p>Edit this file to customize your website!</p>
+    <header id="header">
+        <img src="https://i.ibb.co/9ZQ6fYJ/faisit-logo.png" alt="FAISIT Logo" class="logo" id="logo">
+    </header>
+
+    <div class="section">
+        <div class="content">
+            <h1>Welcome to FAISIT</h1>
+            <p>Scroll down to see the logo color change!</p>
+        </div>
     </div>
+
+    <div class="section">
+        <div class="content">
+            <h1>Section 2</h1>
+            <p>Keep scrolling to see the effect continue...</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="content">
+            <h1>Section 3</h1>
+            <p>The logo changes color based on your scroll position.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="content">
+            <h1>Section 4</h1>
+            <p>This creates a dynamic, engaging user experience!</p>
+        </div>
+    </div>
+
+    <script>
+        const header = document.getElementById('header');
+        const logo = document.getElementById('logo');
+        
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            
+            if (scrollPosition > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            if (Math.floor(scrollPosition / 300) % 2 === 1) {
+                logo.classList.add('color-change');
+            } else {
+                logo.classList.remove('color-change');
+            }
+        });
+    </script>
 </body>
 </html>
